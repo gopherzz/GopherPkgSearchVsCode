@@ -48,5 +48,6 @@
 		"request": "^2.88.2",
 		"request-promise": "^4.2.6"
 	},
-	"publisher": "KYCb"
+	"publisher": "KYCb",
+	"repository": "github.com/KYCb2/GopherPkgSearchVsCode"
 }
