@@ -19,7 +19,7 @@ export async function showInputBox(): Promise<string> {
 	});
 	return `${result}`
 }
-
+// TODO: Add import if import is initialized now
 export function insertImport(pkg: string) {
 	const editor = vscode.window.activeTextEditor;
 

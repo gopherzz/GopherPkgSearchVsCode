@@ -1,7 +1,7 @@
 {
 	"name": "gophersearch",
-	"displayName": "gophersearch",
-	"description": "",
+	"displayName": "GopherPkgSearch",
+	"description": "GopherPkgSearch is Extension for easy search Golang packages from pkg.go.dev!",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.56.0"
