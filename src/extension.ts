@@ -1,5 +1,4 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+
 import { strict } from 'assert';
 import * as vscode from 'vscode';
 import * as rp from 'request-promise';
@@ -33,11 +32,20 @@ export function insertImport(pkg: string) {
 		}
 	}
 }
-
-export async function pickPackage(pkgs: string[]) {
+export async function pickPackage(names: string[], desc: string[]) {
 	let i = 0;
+	let pkgs = []
+
+	for (let i = 0; i < names.length; i++) {
+		let item = {
+			label: names[i],
+			description: desc[i]
+		}
+		pkgs.push(item)
+	}
+
 	const result = await vscode.window.showQuickPick(pkgs, {
-		placeHolder: 'Package...'
+		placeHolder: 'Package..."undefined"'
 	});
 	insertImport(`${result}`)
 }
@@ -47,31 +55,29 @@ export async function getPackages(query: string) {
 	
 	rp(q)
 		.then(html => {
-            var res: string[] = []
+            var res_names: string[] = []
+			var res_description: string[] = []
 			const $ = cheerio.load(html)		
 			for (let i = 0; i < 10; i++) {
-				res.push($('.LegacySearchSnippet > .LegacySearchSnippet-header > a', html)[i].attribs.href.substring(1))
+				res_names.push($('.LegacySearchSnippet > .LegacySearchSnippet-header > a', html)[i].attribs.href.substring(1))
+				res_description.push($('.LegacySearchSnippet > p', html)[i].childNodes[0].data)
 			}
-			pickPackage(res)
+			pickPackage(res_names, res_description)
 		})
 		.catch(err => {
 			vscode.window.showErrorMessage("Filed to find package")
 			console.log(err)
 		})
 }
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
+	
 	console.log('Congratulations, your extension "gophersearch" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
+	
 	let disposable = vscode.commands.registerCommand('gophersearch.searchPkg', () => {
-		// The code you place here will be executed every time your command is executed
+		
 		var q: string = ""
 		let text = showInputBox().then(
 			value => getPackages(value)
@@ -82,5 +88,4 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
