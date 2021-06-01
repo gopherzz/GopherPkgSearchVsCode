@@ -6,7 +6,7 @@ GopherPkgSearch is Extension for easy search Golang packages from pkg.go.dev!
 
 Extension uses for search package by name in Command Pallete and paste for example ("PackageName") to editor under cursor.
 
-## Example:
+## Example
 
 ![Example Gif](https://github.com/KYCb2/GopherPkgSearchVsCode/blob/master/resources/feature.gif?raw=true)
 
