@@ -1,4 +1,4 @@
-# gophersearch README
+# GopherPkgSearch README
 
 GopherPkgSearch is Extension for easy search Golang packages from pkg.go.dev!
 
