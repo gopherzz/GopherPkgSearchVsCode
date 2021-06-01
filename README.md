@@ -1,6 +1,7 @@
 # gophersearch README
 
 GopherPkgSearch is Extension for easy search Golang packages from pkg.go.dev!
+
 ## Features
 
 Extension uses for search package by name in Command Pallete and paste for example ("PackageName") to editor under cursor.
@@ -21,8 +22,6 @@ Added README file.
 
 Added Gif To README file.
 
-
------------------------------------------------------------------------------------------------------------
 ### For more information
 
 * [MyLinkedIn](https://www.linkedin.com/in/nikita-kazeka-432a00211/)
