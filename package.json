@@ -2,7 +2,7 @@
 	"name": "gophersearch",
 	"displayName": "GopherPkgSearch",
 	"description": "GopherPkgSearch is Extension for easy search Golang packages from pkg.go.dev!",
-	"version": "0.0.5",
+	"version": "0.0.51",
 	"engines": {
 		"vscode": "^1.56.0"
 	},
